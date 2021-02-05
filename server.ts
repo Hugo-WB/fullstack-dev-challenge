@@ -1,10 +1,13 @@
 import express from "express";
+import cors from "cors";
 import bodyParser from "body-parser";
 import { body, validationResult } from "express-validator";
 
 const app = express();
 
 app.use(bodyParser.json());
+
+app.use(cors());
 
 app.set("port", process.env.PORT || 3001);
 
@@ -26,6 +29,7 @@ app.post(
       if (!errors.isEmpty()) {
         // if data is invalid, return 400 with errors
         res.status(400).json({ errors: errors.array() });
+        return;
       }
       // destructuring data
       let { initialSavings, monthlyDeposit, interestRate, years } = req.body;
@@ -39,15 +43,18 @@ app.post(
           data.push(monthlyDeposit * month + initialSavings);
         } else {
           data.push(
-            monthlyDeposit *
-              (((1 + interestRate) ** month - 1) / interestRate) +
-              initialSavings * (1 + interestRate) ** month
+            Math.round(
+              monthlyDeposit *
+                (((1 + interestRate) ** month - 1) / interestRate) +
+                initialSavings * (1 + interestRate) ** month
+            )
           );
         }
       }
       // return data as json
       res.status(200).json({ data: data });
     } catch (error) {
+      console.log(error);
       res.status(400).json({ errors: [error] });
     }
   }
