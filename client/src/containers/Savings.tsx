@@ -33,7 +33,7 @@ const Savings = () => {
     const handleChange = (event: React.ChangeEvent<HTMLInputElement>) => {
         setFormInput({
             ...formInput,
-            [event.target.name]: parseInt(event.target.value),
+            [event.target.name]: parseInt(event.target.value) || 0,
         })
     }
     return (
@@ -48,7 +48,7 @@ const Savings = () => {
                 marginX="auto"
                 marginY="auto"
             >
-                <VStack spacing={4} mx="20px">
+                <VStack spacing={4} mx="30px" my="50px">
                     <Heading as="h1" paddingBottom="20px" color="#094067">
                         Interest Rate Calculator
                     </Heading>
