@@ -40,6 +40,7 @@ const LineChart = ({ xAxisData, yAxisData, title, xLabel, yLabel }: Props) => {
                 },
             ],
         },
+        devicePixelRatio:2
     }
 
     return (

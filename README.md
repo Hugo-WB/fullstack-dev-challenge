@@ -1,10 +1,14 @@
 # Changes
 
 - Created a backend that performs the requested calculations
+- Made front-end work with backend to display and take input
 - Added a responsive design that will take up more space on larger screens
 - Changed colour to match finimize
+- Increased chartjs pixel count, was a bit blurry
 
 ## New Dependencies
+
+yarn install in `.` and `./client/`
 
 - cors
 - body-parser

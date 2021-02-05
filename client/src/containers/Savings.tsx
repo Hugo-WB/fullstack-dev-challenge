@@ -1,24 +1,26 @@
 import React, { useEffect, useState } from 'react'
+
 import { Container, Flex, FormErrorMessage, Heading, VStack } from '@chakra-ui/react'
+import fetch from 'node-fetch'
+
 import Input from '../components/Input'
 import Slider from '../components/Slider'
 import LineChart from '../components/LineChart/LineChart'
 import DefaultLayout from '../components/layouts/Default'
-import fetch from 'node-fetch'
 
-// Note: This is just for example purposes
-// should be replaced with real data from the server
 const Savings = () => {
-    const [data, setData] = useState({
-        xAxis: [0, 1, 2, 3, 4, 5],
-        yAxis: [100, 150, 180, 210, 240, 350],
+    const [data, setData] = useState<{ xAxis: number[]; yAxis: number[] }>({
+        xAxis: [],
+        yAxis: [],
     })
     const [formInput, setFormInput] = useState({
         initialSavings: 5000,
         monthlyDeposit: 100,
-        interestRate: 0.1,
+        interestRate: 0.2,
     })
+
     useEffect(() => {
+        // fetch new data when formInput changes
         fetch('http://localhost:3001/', {
             method: 'post',
             body: JSON.stringify(formInput),
@@ -30,7 +32,9 @@ const Savings = () => {
             })
             .catch((e) => console.log(e))
     }, [formInput])
+
     const handleChange = (event: React.ChangeEvent<HTMLInputElement>) => {
+        // Handle change of text input
         setFormInput({
             ...formInput,
             [event.target.name]: parseInt(event.target.value) || 0,
@@ -59,7 +63,6 @@ const Savings = () => {
                         value={formInput.initialSavings}
                         onChange={handleChange}
                     />
-                    {/* <FormErrorMessage>{errors.initialSavings}</FormErrorMessage> */}
                     <Input
                         label="Monthly Deposit"
                         name="monthlyDeposit"
@@ -67,7 +70,6 @@ const Savings = () => {
                         value={formInput.monthlyDeposit}
                         onChange={handleChange}
                     />
-                    {/* <FormErrorMessage>{errors.monthlyDeposit}</FormErrorMessage> */}
                     <Slider
                         value={formInput.interestRate * 100}
                         label={
@@ -81,7 +83,6 @@ const Savings = () => {
                             setFormInput({ ...formInput, interestRate: value / 100 })
                         }}
                     />
-                    {/* <FormErrorMessage>{errors.interestRate}</FormErrorMessage> */}
                 </VStack>
                 <Container w="100%" maxW="900px" mx="20px">
                     <LineChart
