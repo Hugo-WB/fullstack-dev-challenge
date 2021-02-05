@@ -15,9 +15,6 @@ yarn install in `.` and `./client/`
 - express-validator
 - node-fetch
 
-
-
-
 ### Large Screen
 
 ![largeScreen](https://i.imgur.com/I5G8pEV.png)
@@ -26,24 +23,27 @@ yarn install in `.` and `./client/`
 
 ![smallScreen](https://i.imgur.com/uQId7Ev.png)
 
-
 ### Animation
+
 ![animation](https://i.imgur.com/2xg1mpn.gif)
 
 # Thoughts
+
 I enjoyed the project quite a bit. <br/>
 I learnt quite a bit about the chart.js library, in the past I used plotly.js as I was plotting 3D charts. Chart.js however, does seem like the better choice when plotting standard line graphs.
 
 # Approach
 
-I started with the backend and implemented a simple app.post in express. <br/>
-I added request validation just in case as well as an optional parameter that allows the user to define how many years they would like.<br/><br/>
-For the front-end, I first added the form functionality. I then linked that to the backend using node-fetch. A problem I encountered was CORS errors, so I had to add the cors package to the server. After the app was functional, I fixed the design, making the layout responsive and making the colour scheme fit your website.
+I started with the backend and implemented a simple `app.post()` in express.<br/>
+I added request validation using express-validate, as well as an optional parameter that allows the user to define how many years they would like to have returned.<br/><br/>
+For the front-end, I first added the form functionality. I then linked that to the backend using node-fetch. A problem I encountered was CORS errors, so I had to add the cors package to the server. After the app was functional, I fixed the design, the layout and the colour scheme.
+<br />
+I felt like the graph looked a bit blurry so I increased the devicePixelRatio of the linegraph which fixed the problem.
 
 # Future Improvements
+
 In the future I would like to switch the forms to Formik, however I felt like it was not worth it for only 3 input fields. <br/>
 I also think I could implement tests in the future.
-
 
 # Finimize Full-Stack Development Challenge
 
