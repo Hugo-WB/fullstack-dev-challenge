@@ -11,7 +11,7 @@ const NavHeader = () => (
         py={4}
         bg="blue100"
     >
-        <Image src={images.fullBrandLogo} alt="Finimize" width="160px" />
+        <Image src={images.fullBrandLogo} alt="Finimize" width="160px" marginX="10vw" />
     </Box>
 )
 
