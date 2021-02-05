@@ -25,7 +25,7 @@ yarn install in `.` and `./client/`
 
 ### Animation
 
-![animation](https://i.imgur.com/2xg1mpn.gif)
+<!-- ![animation](https://i.imgur.com/2xg1mpn.gif) -->
 
 # Thoughts
 
